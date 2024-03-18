@@ -26,6 +26,6 @@ This project aims to create an educational platform using Symfony, API Platform,
 
 - [x] Authentication functionality added.
 - [x] Frontend login setup using.
-- [x] Backend setup using Symfony and API Platform.
+- [x] Backend login setup using Symfony and API Platform.
 - [x] ORM setup with Doctrine for database management.
 
