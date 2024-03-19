@@ -1,4 +1,5 @@
-
+Project in development.
+Database not included yet.
 
 # Edusym Project
 
