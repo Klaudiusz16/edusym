@@ -25,10 +25,10 @@ This project aims to create an educational platform using Symfony, API Platform,
 
 ## Milestone
 
-:white_check_mark: Add EasyAdmin 4
-:white_check_mark: Authentication functionality added.
-:white_check_mark: Frontend login setup using.
-:white_check_mark: Backend login setup using Symfony and API Platform.
-:white_check_mark: ORM setup with Doctrine for database management.
-:white_check_mark: Refresh token functionality
-:white_check_mark: Configure GraphQL Client
+- :white_check_mark: Add EasyAdmin 4
+- :white_check_mark: Authentication functionality added.
+- :white_check_mark: Frontend login setup using.
+- :white_check_mark: Backend login setup using Symfony and API Platform.
+- :white_check_mark: ORM setup with Doctrine for database management.
+- :white_check_mark: Refresh token functionality
+- :white_check_mark: Configure GraphQL Client
