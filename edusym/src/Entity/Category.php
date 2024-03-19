@@ -41,7 +41,7 @@ class Category
 
     public function getImage(): ?string
     {
-        return $this->image;
+        return "/uploads/files/" . $this->image;
     }
 
     public function setImage(string $image): static

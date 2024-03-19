@@ -13,12 +13,12 @@ const errorLink = onError(({ networkError, operation, forward }: ErrorResponse) 
     if (
         networkError &&
         'statusCode' in networkError &&
-        networkError.statusCode === 401 && TOKEN
+        networkError.statusCode === 401 && REFRESH_TOKEN
     ) {
         (async () => {
-            const refreshTokenController = new RefreshTokenController(TOKEN);
+            const refreshTokenController = new RefreshTokenController(REFRESH_TOKEN);
             const newToken = await refreshTokenController.getToken()
-            TOKEN = newToken
+            refreshTokenController.saveToLocalStorage(newToken.token, newToken.refresh_token)
             return forward(operation)
         })()
     }
