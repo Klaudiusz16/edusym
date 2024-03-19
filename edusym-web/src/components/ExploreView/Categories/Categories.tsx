@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import Loader from '../../Loading/Loader';
 import { ThemeContext } from '../../AppLayout/AppLayout';
+import { gql } from '../../../__generated__';
 
 
 export default function Categories() {
@@ -24,18 +25,18 @@ export default function Categories() {
     )
 }
 
-
-const GET_CATEGORIES = gql`
+const GET_CATEGORIES = gql(/* GraphQL */ `
   query GetCategories {
-        categories {
-            edges {
-                node {
-                    name
-                    id
-                    image
-                }
+    categories {
+        edges {
+            node {
+                name
+                id
+                image
             }
+        }
     }
   }
-`;
+`);
+
 
