@@ -23,6 +23,7 @@ This project aims to create an educational platform using Symfony, API Platform,
 - Tailwind
 - axios
 - React Router Dom 6
+- Graphql
 
 ## Milestone
 
@@ -33,3 +34,4 @@ This project aims to create an educational platform using Symfony, API Platform,
 - :white_check_mark: ORM setup with Doctrine for database management.
 - :white_check_mark: Refresh token functionality
 - :white_check_mark: Configure GraphQL Client
+- :white_check_mark: Add autotyping for GraphQL
