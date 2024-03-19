@@ -35,3 +35,4 @@ This project aims to create an educational platform using Symfony, API Platform,
 - :white_check_mark: Refresh token functionality
 - :white_check_mark: Configure GraphQL Client
 - :white_check_mark: Add autotyping for GraphQL
+- :black_circle: Coding the "explore" tab...
