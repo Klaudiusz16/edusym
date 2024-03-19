@@ -2,6 +2,9 @@ auth:
   path: /auth
   methods: ["POST"]
 
+api_refresh_token:
+  path: /api/refresh-token
+
 controllers:
   resource:
     path: ../src/Controller/

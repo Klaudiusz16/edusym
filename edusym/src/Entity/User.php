@@ -15,6 +15,7 @@ use ApiPlatform\Metadata\GetCollection;
             new Get(),
             new GetCollection()
         ],
+        security: "is_granted('ROLE_USER')"
     )]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_USERNAME', fields: ['username'])]
