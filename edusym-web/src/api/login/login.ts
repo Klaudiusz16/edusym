@@ -16,13 +16,14 @@ export default class LoginController {
         username: this.username,
         password: this.password,
       });
-      return data.token;
+      return data;
     } catch (err) {
       return false;
     }
   }
 
-  saveToLocalStorage(token: string) {
+  saveToLocalStorage(token: string, refreshToken: string) {
     window.localStorage.setItem("user", token);
+    window.localStorage.setItem("refresh_token", refreshToken);
   }
 }

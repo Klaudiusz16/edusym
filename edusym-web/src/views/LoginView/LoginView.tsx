@@ -37,7 +37,7 @@ export default function LoginView() {
             return
         }
 
-        Login.saveToLocalStorage(token);
+        Login.saveToLocalStorage(token.token, token.refresh_token);
 
         return navigate("/");
 

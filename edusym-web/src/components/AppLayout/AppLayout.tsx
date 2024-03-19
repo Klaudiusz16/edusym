@@ -1,27 +1,42 @@
 import { ReactElement } from 'react'
-import { Layout, ConfigProvider, ThemeConfig } from 'antd';
+import { Layout, ConfigProvider, ThemeConfig, message } from 'antd';
 import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
 const { Header: AntHeader, Footer, Sider, Content } = Layout;
+import { createContext } from 'react';
+
+export const ThemeContext = createContext<any>(null);
 
 
 export default function AppLayout({ children }: { children?: ReactElement | ReactElement[] }) {
+    const [messageApi, contextHolder] = message.useMessage();
+
+
+    const renderMessege = (message: string) => {
+        messageApi.info(message);
+    };
+
+
+
     return (
-        <ConfigProvider
-            theme={theme}
-        >
-            <Layout className='h-screen'>
-                <Sider width="15%" >
-                    <Sidebar />
-                </Sider>
-                <Layout>
-                    <AntHeader className="px-0">
-                        <Header />
-                    </AntHeader>
-                    <Content>{children}</Content>
-                    <Footer>Footer</Footer>
-                </Layout>
-            </Layout></ConfigProvider>
+        <ThemeContext.Provider value={{ renderMessege: renderMessege }}>
+            <ConfigProvider
+                theme={theme}
+            >
+                <Layout className='h-screen'>
+                    {contextHolder}
+                    <Sider width="15%" >
+                        <Sidebar />
+                    </Sider>
+                    <Layout>
+                        <AntHeader className="px-0">
+                            <Header />
+                        </AntHeader>
+                        <Content>{children}</Content>
+                        <Footer>Footer</Footer>
+                    </Layout>
+                </Layout></ConfigProvider>
+        </ThemeContext.Provider>
     )
 }
 

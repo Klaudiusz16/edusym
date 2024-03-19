@@ -8,6 +8,7 @@ import HomeView from './views/HomeView/HomeView';
 import Providers from './components/Providers/Providers';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import LoginView from './views/LoginView/LoginView';
+import ExploreView from './views/ExploreView/ExploreView';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
   {
     path: "explore",
     element: (
-      <PrivateRoute Component={HomeView} />
+      <PrivateRoute Component={ExploreView} />
     ),
   },
   {
