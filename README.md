@@ -25,7 +25,7 @@ This project aims to create an educational platform using Symfony, API Platform,
 - React Router Dom 6
 - Graphql
 
-## Milestone
+## What is currently implemented?
 
 - :white_check_mark: Add EasyAdmin 4
 - :white_check_mark: Authentication functionality added.
