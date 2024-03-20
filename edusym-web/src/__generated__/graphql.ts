@@ -21,9 +21,19 @@ export type Scalars = {
 export type Category = Node & {
   __typename?: 'Category';
   _id: Scalars['Int']['output'];
+  courses?: Maybe<CourseCursorConnection>;
   id: Scalars['ID']['output'];
   image: Scalars['String']['output'];
   name: Scalars['String']['output'];
+};
+
+
+export type CategoryCoursesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  isBestseller?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** Cursor connection for Category. */
@@ -53,7 +63,21 @@ export type CategoryPageInfo = {
 export type Course = Node & {
   __typename?: 'Course';
   _id: Scalars['Int']['output'];
+  category?: Maybe<CategoryCursorConnection>;
+  date: Scalars['String']['output'];
   id: Scalars['ID']['output'];
+  isBestseller: Scalars['Boolean']['output'];
+  miniature: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  price: Scalars['String']['output'];
+};
+
+
+export type CourseCategoryArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
 };
 
 /** Cursor connection for Course. */
@@ -187,6 +211,7 @@ export type QueryCoursesArgs = {
   after?: InputMaybe<Scalars['String']['input']>;
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
+  isBestseller?: InputMaybe<Scalars['Boolean']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
 };
 
@@ -248,6 +273,7 @@ export type UserPageInfo = {
 /** Creates a Category. */
 export type CreateCategoryInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  courses?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   image: Scalars['String']['input'];
   name: Scalars['String']['input'];
 };
@@ -261,7 +287,13 @@ export type CreateCategoryPayload = {
 
 /** Creates a Course. */
 export type CreateCourseInput = {
+  category?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  date: Scalars['String']['input'];
+  isBestseller: Scalars['Boolean']['input'];
+  miniature: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  price: Scalars['String']['input'];
 };
 
 /** Creates a Course. */
@@ -330,6 +362,7 @@ export type DeleteUserPayload = {
 /** Updates a Category. */
 export type UpdateCategoryInput = {
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  courses?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   id: Scalars['ID']['input'];
   image?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
@@ -344,8 +377,14 @@ export type UpdateCategoryPayload = {
 
 /** Updates a Course. */
 export type UpdateCourseInput = {
+  category?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  date?: InputMaybe<Scalars['String']['input']>;
   id: Scalars['ID']['input'];
+  isBestseller?: InputMaybe<Scalars['Boolean']['input']>;
+  miniature?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Updates a Course. */
@@ -373,10 +412,16 @@ export type UpdateUserPayload = {
   user?: Maybe<User>;
 };
 
+export type GetBestsellersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetBestsellersQuery = { __typename?: 'Query', courses?: { __typename?: 'CourseCursorConnection', edges?: Array<{ __typename?: 'CourseEdge', node?: { __typename?: 'Course', name: string, id: string, miniature: string, date: string, price: string, category?: { __typename?: 'CategoryCursorConnection', edges?: Array<{ __typename?: 'CategoryEdge', node?: { __typename?: 'Category', id: string, name: string } | null } | null> | null } | null } | null } | null> | null } | null };
+
 export type GetCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetCategoriesQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryCursorConnection', edges?: Array<{ __typename?: 'CategoryEdge', node?: { __typename?: 'Category', name: string, id: string, image: string } | null } | null> | null } | null };
 
 
+export const GetBestsellersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetBestsellers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"courses"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"isBestseller"},"value":{"kind":"BooleanValue","value":true}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"miniature"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetBestsellersQuery, GetBestsellersQueryVariables>;
 export const GetCategoriesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCategories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"image"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetCategoriesQuery, GetCategoriesQueryVariables>;

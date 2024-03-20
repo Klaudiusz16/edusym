@@ -6,7 +6,7 @@ const { Title } = Typography;
 
 export default function CategoryItem({ link, name, icon }: { link: string, name?: string, icon?: string }) {
     return (
-        <Link to={link} className='flex py-5 flex-col items-center hover:bg-additional transition-all duration-300'>
+        <Link to={link} className='flex py-5 flex-col items-center hover:bg-gray-300 transition-all duration-300'>
             <img className="w-[100px]" src={`${SERVER}${icon}`} alt="icon" />
             <Title level={3}>{name}</Title>
         </Link>

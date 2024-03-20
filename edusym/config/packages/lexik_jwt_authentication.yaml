@@ -6,3 +6,4 @@ lexik_jwt_authentication:
     check_path: /auth
     username_path: username
     password_path: password
+  token_ttl: 3600
