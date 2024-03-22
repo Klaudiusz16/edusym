@@ -7,6 +7,7 @@ import { Carousel, Typography } from 'antd';
 import CourseShortcut from '../../CourseShortcut/CourseShortcut';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { CarouselRef } from 'antd/es/carousel';
+import getPlainID from '../../../helpers/getPlainID';
 const { Title } = Typography;
 
 
@@ -14,6 +15,8 @@ const { Title } = Typography;
 export default function Bestsellers() {
     const { loading, error, data } = useQuery(GET_BESTSELLERS);
     const { renderMessege } = useContext(ThemeContext);
+    const caruselRef = useRef<CarouselRef>(null)
+
     if (loading) {
         return <Loader />
     }
@@ -22,7 +25,9 @@ export default function Bestsellers() {
         renderMessege(error.message)
     }
 
-    const caruselRef = useRef<CarouselRef>(null)
+
+
+
 
 
     return (
@@ -37,7 +42,7 @@ export default function Bestsellers() {
                     name: course?.node?.name || "",
                     thumbnail: course?.node?.miniature || "",
                     link: `course/${course?.node?.id}`,
-                    id: Number(course?.node?.id) || 0,
+                    id: getPlainID(course?.node?.id || ""),
                     price: Number(course?.node?.price) || 0
                 }} /></div>)}
             </Carousel>
@@ -56,14 +61,6 @@ const GET_BESTSELLERS = gql(/* GraphQL */ `
               miniature
               date
               price
-              category{
-                edges{
-				    node{
-                        id
-                        name
-					}
-                }
-              }
 			}
 		}
     }

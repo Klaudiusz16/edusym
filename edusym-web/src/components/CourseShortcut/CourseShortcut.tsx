@@ -6,7 +6,7 @@ const { Title } = Typography
 
 export default function CourseShortcut({ data }: { data: CourseShortcutType }) {
     return (
-        <Link to={data.link} className="group w-full flex flex-col transition-all duration-300">
+        <Link to={`/course/${data.id}`} className="group w-full flex flex-col transition-all duration-300">
             <div className="overflow-hidden aspect-video w-full object-cover">
                 <img alt='' src={SERVER + data.thumbnail} className='scale-100 group-hover:scale-110 transition-all duration-300' />
             </div>

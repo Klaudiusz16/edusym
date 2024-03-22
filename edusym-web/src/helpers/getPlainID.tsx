@@ -1,0 +1,1 @@
+export default (id: string): number => Number(id.split("/").slice(-1))

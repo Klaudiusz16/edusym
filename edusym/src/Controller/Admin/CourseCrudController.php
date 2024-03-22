@@ -13,6 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 
 class CourseCrudController extends AbstractCrudController
 {
@@ -29,11 +30,12 @@ class CourseCrudController extends AbstractCrudController
             ->setFormType( FileUploadType::class )
             ->setCustomOption('basePath', 'uploads/')
             ->setCustomOption('uploadDir', 'public/uploads')
-            ->setCustomOption('uploadedFileNamePattern', '[year][month][day]-[slug].[extension]'),
+            ->setCustomOption('uploadedFileNamePattern', '[year][month][day]-[slug].[extension]')->onlyWhenCreating(),
             BooleanField::new("isBestseller"),
             DateField::new('date'),
             NumberField::new('price'),
-            AssociationField::new('category')
+            AssociationField::new('category'),
+            ArrayField::new("whatLearn")
         ];
     }
 }

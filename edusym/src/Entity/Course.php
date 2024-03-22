@@ -10,18 +10,23 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 #[ORM\Entity(repositoryClass: CourseRepository::class)]
-#[ApiResource(security: "is_granted('ROLE_USER')")]
+#[ApiResource(
+    security: "is_granted('ROLE_USER')"
+    )]
 #[ApiFilter(BooleanFilter::class, properties: ['isBestseller'])]
 class Course
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $miniature = null;
 
     #[ORM\Column(length: 255)]
@@ -38,6 +43,9 @@ class Course
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'courses')]
     private Collection $category;
+
+    #[ORM\Column(type: Types::SIMPLE_ARRAY)]
+    private array $whatLearn = [];
 
     public function __construct()
     {
@@ -129,6 +137,18 @@ class Course
     public function removeCategory(Category $category): static
     {
         $this->category->removeElement($category);
+
+        return $this;
+    }
+
+    public function getWhatLearn(): array
+    {
+        return $this->whatLearn;
+    }
+
+    public function setWhatLearn(array $whatLearn): static
+    {
+        $this->whatLearn = $whatLearn;
 
         return $this;
     }

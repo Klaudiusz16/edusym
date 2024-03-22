@@ -32,7 +32,7 @@ export default function AppLayout({ children }: { children?: ReactElement | Reac
                         <AntHeader className="px-0">
                             <Header />
                         </AntHeader>
-                        <Content className='p-5 overflow-y-scroll'>{children}</Content>
+                        <Content className='p-5 overflow-scroll'>{children}</Content>
                         <Footer>Footer</Footer>
                     </Layout>
                 </Layout></ConfigProvider>

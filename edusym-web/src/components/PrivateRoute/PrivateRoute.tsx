@@ -2,6 +2,7 @@ import React, { FunctionComponent, ReactElement, useEffect, useState } from 'rea
 import { useAppSelector } from '../../store/hooks'
 import { Navigate } from "react-router-dom"
 import LoadingScreen from '../Loading/LoadingScreen';
+import AppLayout from '../AppLayout/AppLayout';
 
 export default function PrivateRoute({ Component }: { Component: FunctionComponent }) {
     const [user, setUser] = useState<null | false | string>(null);
@@ -28,7 +29,7 @@ export default function PrivateRoute({ Component }: { Component: FunctionCompone
     }
 
     if (user) {
-        return <Component />
+        return <AppLayout><Component /></AppLayout>
     }
 
 }

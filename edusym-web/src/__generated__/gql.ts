@@ -13,8 +13,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  query GetBestsellers  {\n      courses (isBestseller:true) {\n\t\tedges{\n            node {\n              name\n              id\n              miniature\n              date\n              price\n              category{\n                edges{\n\t\t\t\t    node{\n                        id\n                        name\n\t\t\t\t\t}\n                }\n              }\n\t\t\t}\n\t\t}\n    }\n}\n": types.GetBestsellersDocument,
+    "\n  query GetBestsellers  {\n      courses (isBestseller:true) {\n\t\tedges{\n            node {\n              name\n              id\n              miniature\n              date\n              price\n\t\t\t}\n\t\t}\n    }\n}\n": types.GetBestsellersDocument,
     "\n  query GetCategories {\n    categories {\n        edges {\n            node {\n                name\n                id\n                image\n            }\n        }\n    }\n  }\n": types.GetCategoriesDocument,
+    "\n  query GetCourseInfo ($iri: ID!) {\n      course (id: $iri) {\n              name\n              id\n              miniature\n              date\n              whatLearn\n              price\n              category{\n                edges{\n\t\t\t\t    node{\n                        id\n                        name\n\t\t\t\t    }\n                }\n              }\n\t}\n}\n": types.GetCourseInfoDocument,
 };
 
 /**
@@ -34,11 +35,15 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query GetBestsellers  {\n      courses (isBestseller:true) {\n\t\tedges{\n            node {\n              name\n              id\n              miniature\n              date\n              price\n              category{\n                edges{\n\t\t\t\t    node{\n                        id\n                        name\n\t\t\t\t\t}\n                }\n              }\n\t\t\t}\n\t\t}\n    }\n}\n"): (typeof documents)["\n  query GetBestsellers  {\n      courses (isBestseller:true) {\n\t\tedges{\n            node {\n              name\n              id\n              miniature\n              date\n              price\n              category{\n                edges{\n\t\t\t\t    node{\n                        id\n                        name\n\t\t\t\t\t}\n                }\n              }\n\t\t\t}\n\t\t}\n    }\n}\n"];
+export function gql(source: "\n  query GetBestsellers  {\n      courses (isBestseller:true) {\n\t\tedges{\n            node {\n              name\n              id\n              miniature\n              date\n              price\n\t\t\t}\n\t\t}\n    }\n}\n"): (typeof documents)["\n  query GetBestsellers  {\n      courses (isBestseller:true) {\n\t\tedges{\n            node {\n              name\n              id\n              miniature\n              date\n              price\n\t\t\t}\n\t\t}\n    }\n}\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "\n  query GetCategories {\n    categories {\n        edges {\n            node {\n                name\n                id\n                image\n            }\n        }\n    }\n  }\n"): (typeof documents)["\n  query GetCategories {\n    categories {\n        edges {\n            node {\n                name\n                id\n                image\n            }\n        }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query GetCourseInfo ($iri: ID!) {\n      course (id: $iri) {\n              name\n              id\n              miniature\n              date\n              whatLearn\n              price\n              category{\n                edges{\n\t\t\t\t    node{\n                        id\n                        name\n\t\t\t\t    }\n                }\n              }\n\t}\n}\n"): (typeof documents)["\n  query GetCourseInfo ($iri: ID!) {\n      course (id: $iri) {\n              name\n              id\n              miniature\n              date\n              whatLearn\n              price\n              category{\n                edges{\n\t\t\t\t    node{\n                        id\n                        name\n\t\t\t\t    }\n                }\n              }\n\t}\n}\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

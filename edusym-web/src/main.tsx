@@ -9,6 +9,7 @@ import Providers from './components/Providers/Providers';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import LoginView from './views/LoginView/LoginView';
 import ExploreView from './views/ExploreView/ExploreView';
+import CourseView from './views/CourseView/CourseView';
 
 const router = createBrowserRouter([
   {
@@ -19,12 +20,14 @@ const router = createBrowserRouter([
   },
   {
     path: "explore",
+
     element: (
       <PrivateRoute Component={ExploreView} />
     ),
   },
   {
     path: "lessons",
+
     element: (
       <PrivateRoute Component={HomeView} />
     ),
@@ -34,7 +37,12 @@ const router = createBrowserRouter([
     element: (
       <LoginView />
     ),
-  },
+  }, {
+    path: "course/:id",
+    element: (
+      <PrivateRoute Component={CourseView} />
+    )
+  }
 ]);
 
 createRoot(document.getElementById("root") as HTMLDivElement).render(

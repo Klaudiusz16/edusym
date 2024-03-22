@@ -19,6 +19,8 @@ const errorLink = onError(({ networkError, operation, forward }: ErrorResponse) 
         'statusCode' in networkError &&
         networkError.statusCode === 401 && tmp_rt
     ) {
+
+
         const refreshTokenController = new RefreshTokenController(tmp_rt);
         return new Observable(observer => {
             refreshTokenController.getToken()
@@ -46,6 +48,7 @@ const errorLink = onError(({ networkError, operation, forward }: ErrorResponse) 
                     return redirect("/login")
                 });
         });
+
     }
 
 });
@@ -66,6 +69,10 @@ const client = new ApolloClient({
 
 
 export default function Providers({ children }: { children?: ReactElement | ReactElement[] }) {
+
+
+
+
     return (
         <ApolloProvider client={client}>
             <Provider store={store}>{children}</Provider>
